@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<title>lab 2</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" href="/lab2music/static/bootstrap.min.css">
+		<script src="/lab2music/static/jquery.min.js"></script>
+		<script src="/lab2music/static/jquery.maskedinput.min.js"></script>
+		<script src="/lab2music/static/jquery.validate.min.js"></script>
+		<script src="/lab2music/static/scripts.js"></script>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/artists/get">Artists</a></li>
+						<li><a href="/albums/get">Albums</a></li>
+						<li><a href="/studios/get">Studios</a></li>
+						<li><a href="/tracks/get">Tracks</a></li>
+						<li><a href="/fill-db-from-json">test fill</a></li>
+					</ul>
+				</div><!--/ nav -->
+			</div>
+		</div>
+		<div style="margin-top: 100px" class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<td class="">track</td>
+								<td class="">album</td>
+								<td class="">style</td>
+								<td class="">date of record</td>
+								<td class="">duration</td>
+								<td class="">artist</td>
+								<td class="">studio</td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for row in table %}
+								<tr class="{{ row.id }}">
+									<td class="">{{ row.track }}</td>
+									<td class="">{{ row.album }}</td>
+									<td class="">{{ row.style }}</td>
+									<td class="">{{ row.date_record }}</td>
+									<td class="">{{ row.duration }}</td>
+									<td class="">{{ row.artist }}</td>
+									<td class="">{{ row.studio }}</td>
+									<td><a href="http://localhost:8000/tracks/delete?id={{row.id}}" class="btn-link">delete</a></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div><!-- / table -->
+			<div class="row">
+				<div class="col-md-12">
+					<form id="add-track" role="form">
+						<input type="text" name="track" class=" form-control input-md" placeholder="track">
+						<input type="text" name="album" class=" form-control input-md" placeholder="album">
+						<input type="text" name="date_record" class="date_record form-control input-md" placeholder="date of record">
+						<input type="text" name="duration" class=" form-control input-md" placeholder="duration (minutes:seconds)">
+						<button type="button" class="add-track btn btn-primary">new track</button>
+					</form>
+				</div>
+			</div><!-- / form -->
+		</div><!-- / container -->
+		<div style="margin-top: 50px"></div>
+	</body>
+</html>
